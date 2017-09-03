@@ -66,13 +66,22 @@
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
       <div class="container">
-        <h2 class="text-center">The pulse
+        <h2 class="text-center">The 'big picture' pulse
+        <p style="text-align: center">Tracking 'vote yes' versus 'vote no' in a 24 hour period</p>
         </h2>
         <hr class="star-primary">
         <div class="row">
-          
+          <div class = "col-12" id="pulse-chart-2" style="height:380px;">
+        </div>
+      </div>
+      <div class="container">
+        <p style="padding-top: 50px;">
+        <h2 class="text-center">The hourly pulse
+            <p style="text-align: center">Tracking hourly search intensity for 'vote yes' and 'vote no'</p>
+        </h2>
+        <hr class="star-primary">
+        <div class="row">
           <div class = "col-12" id="pulse-chart" style="height:380px;">
-          
         </div>
       </div>
     </section>
@@ -218,14 +227,15 @@
         line: {                             // set the width of the line.
           width: 1,
           color: 'rgb(214, 110, 36)'
-        }
+        },
+        name: '\'Vote Yes\''
       };
 
       var trace2 = {
         type: 'scatter',                    // set the chart type
         mode: 'lines',                      // connect points with lines
         x: rows.map(function(row){          // set the x-data
-          return row['Time'];
+          return row['date'];
         }),
         y: rows.map(function(row){          // set the x-data
           return row['normalized_no'];
@@ -233,7 +243,8 @@
         line: {                             // set the width of the line.
           width: 1,
           color: 'rgb(45, 4, 40)'
-        }
+        },
+        name: '\'Vote No\''
       };
 
       
@@ -246,12 +257,64 @@
         },
         margin: {                           // update the left, bottom, right, top margin
           l: 40, b: 20, r: 10, t: 20
-        }
+        },
+        hoverinfo: "none"
       };
       var data = [trace1, trace2];
       Plotly.plot(document.getElementById('pulse-chart'), data, layout, {showLink: false});
+
+      
   });
   </script>
+<script>
+  Plotly.d3.csv('https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/gay-marriage-pulse/app/result-grouped.csv', function(rows){
+    var trace1 = {
+      type: 'scatter',                    // set the chart type
+      mode: 'lines',                      // connect points with lines
+      x: rows.map(function(row){          // set the x-data
+        return row['date'];
+      }),
+      y: rows.map(function(row){          // set the x-data
+        return row['odds'];
+      }),
+      line: {                             // set the width of the line.
+        width: 1,
+        color: 'rgb(214, 110, 36)'
+      },
+      name: 'Odds of \'Vote Yes\''
+    };
+
+    var trace2 = {
+      type: 'scatter',                    // set the chart type
+      mode: 'lines',                      // connect points with lines
+      x: rows.map(function(row){          // set the x-data
+        return row['date'];
+      }),
+      y: Array(500).fill(0.5),
+      line: {                             // set the width of the line.
+        width: 1,
+        color: 'rgb(0,0,0)'
+      },
+      name: '50:50 yes:no'
+    };
+
+
+    var layout = {
+      yaxis: {title: "Odds",
+              range: [0, 1]},       // set the y axis title
+      xaxis: {
+        showgrid: false,                  // remove the x-axis grid lines
+        tickformat: "%B, %Y"              // customize the date format to "month, day"
+      },
+      margin: {                           // update the left, bottom, right, top margin
+        l: 40, b: 20, r: 10, t: 20
+      },
+      hoverinfo: "none"
+    };
+    var data = [trace1, trace2];
+    Plotly.plot(document.getElementById('pulse-chart-2'), data, layout, {showLink: false});
+});
+</script>
   </body>
 
 </html>
