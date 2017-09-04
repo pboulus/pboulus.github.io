@@ -103,6 +103,7 @@ def group_by_day(result_filtered):
     result_filtered_grouped['date'] = pd.to_datetime(result_filtered_grouped['level_0'] * 10000 + result_filtered_grouped['level_1'] * 100 + result_filtered_grouped['level_2'], format="%Y%m%d")
     result_filtered_grouped.set_index('date', inplace=True)
     result_filtered_grouped['odds'] = result_filtered_grouped['normalized_yes'] / (result_filtered_grouped['normalized_yes'] + result_filtered_grouped['normalized_no'])
+    result_filtered_grouped['odds_rolling'] = pd.rolling_mean(result_filtered_grouped['odds'], 7)
     return result_filtered_grouped
 
 def join_data(first, second):
@@ -123,28 +124,6 @@ def join_data(first, second):
     joined = joined.dropna(axis=0, how='any', subset=['normalized_yes', 'normalized_no'])
     joined = joined.sort_index()
     joined = joined[~joined.index.duplicated(keep='first')]
+    joined['yes_rolling'] = pd.rolling_mean(joined['normalized_yes'], 12) #12 hour rolling avg
+    joined['no_rolling'] = pd.rolling_mean(joined['normalized_no'], 12) #12 hour rolling avg
     return joined
-
-def initialize():
-    result = collect_data(end_date = '2017-08-20')
-    result = scale_data(result)
-    result.to_pickle('result.pd')
-    result.to_csv('result.csv')
-    group_by_day(result).to_csv('result-grouped.csv')
-
-def update():
-    result = pd.read_pickle('result.pd')
-    maxtime = np.datetime64(max(result.index))
-    now = np.datetime64('now')
-    delta = pd.Timedelta(now - maxtime, 'h')
-    print(delta.seconds)
-    if (delta.days > 0 or delta.seconds > 10800):
-        result2 =  collect_data(start_date=maxtime-pd.Timedelta('2 day'))
-        result2 = scale_data(result2)
-        result = join_data(result, result2)
-        print("Updated data")
-        result.to_pickle('result.pd')
-        result.to_csv('result.csv')
-        group_by_day(result).to_csv('result-grouped.csv')
-    else:
-        print("No update available")
