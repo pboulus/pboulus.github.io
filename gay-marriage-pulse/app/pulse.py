@@ -14,13 +14,6 @@ def date_to_string(datetimevar, form='%Y-%m-%dT%H'):
     return timestring
 
 def collect_data(start_date = '2017-07-01T00:00', end_date = 'now'):
-    from pytrends.request import TrendReq
-    from IPython.core.pylabtools import figsize
-    import numpy as np
-    import pandas as pd 
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-    
     # Set start date for data collection (end date is today)
     start_date = np.datetime64(start_date)
     end_date = np.datetime64(end_date)
