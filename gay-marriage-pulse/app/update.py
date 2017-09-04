@@ -2,6 +2,10 @@ import pulse
 import pandas as pd
 import numpy as np
 import json
+import pickle as pkl
+
+pkl.HIGHEST_PROTOCOL = 2
+
 result = pd.read_pickle('result.pd')
 maxtime = np.datetime64(max(result.index))
 now = np.datetime64('now')
