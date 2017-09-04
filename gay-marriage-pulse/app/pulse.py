@@ -1,9 +1,9 @@
 from pytrends.request import TrendReq
-from IPython.core.pylabtools import figsize
+#from IPython.core.pylabtools import figsize
 import numpy as np
 import pandas as pd 
-import matplotlib as mpl
-import matplotlib.pyplot as plt
+#import matplotlib as mpl
+#import matplotlib.pyplot as plt
 result = pd.DataFrame
 
 # Define date to string formatter function
