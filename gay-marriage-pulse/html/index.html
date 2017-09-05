@@ -240,10 +240,10 @@
           return row['date'];
         }),
         y: rows.map(function(row){          // set the x-data
-          return row['normalized_yes'];
+          return row['yes_rolling'];
         }),
         line: {                             // set the width of the line.
-          width: 1,
+          width: 2,
           color: 'rgb(227, 14, 32)'
         },
         name: '\'Vote Yes\''
@@ -256,10 +256,10 @@
           return row['date'];
         }),
         y: rows.map(function(row){          // set the x-data
-          return row['normalized_no'];
+          return row['no_rolling'];
         }),
         line: {                             // set the width of the line.
-          width: 1,
+          width: 2,
           color: 'rgb(45, 4, 40)'
         },
         name: '\'Vote No\''
@@ -297,13 +297,29 @@
         return row['odds']*100;
       }),
       line: {                             // set the width of the line.
-        width: 1,
+        width: 0.3,
+        style: '--',
         color: 'rgb(227, 14, 32)'
       },
       name: 'Share of \'Vote Yes\''
     };
-
     var trace2 = {
+      type: 'scatter',                    // set the chart type
+      mode: 'lines',                      // connect points with lines
+      x: rows.map(function(row){          // set the x-data
+        return row['date'];
+      }),
+      y: rows.map(function(row){          // set the x-data
+        return row['odds_rolling']*100;
+      }),
+      line: {                             // set the width of the line.
+        width: 2,
+        color: 'rgb(227, 14, 32)'
+      },
+      name: 'Rolling 7 day average'
+    };
+
+    var trace3 = {
       type: 'scatter',                    // set the chart type
       mode: 'lines',                      // connect points with lines
       x: rows.map(function(row){          // set the x-data
@@ -333,7 +349,7 @@
       },
       hoverinfo: "none"
     };
-    var data = [trace1, trace2];
+    var data = [trace1, trace2, trace3];
     Plotly.plot(document.getElementById('pulse-chart-2'), data, layout, {showLink: false, displayModeBar:  false});
 });
 </script>
