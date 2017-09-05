@@ -91,7 +91,7 @@ def scale_data(result):
     return result
 
 def group_by_day(result_filtered):
-    result_filtered_grouped = pd.groupby(result_filtered,by=[result_filtered.index.year, result_filtered.index.month, result_filtered.index.day]).sum()
+    result_filtered_grouped = result_filtered.groupby(by=[result_filtered.index.year, result_filtered.index.month, result_filtered.index.day]).sum()
     result_filtered_grouped = result_filtered_grouped.reset_index()
     result_filtered_grouped['date'] = pd.to_datetime(result_filtered_grouped['level_0'] * 10000 + result_filtered_grouped['level_1'] * 100 + result_filtered_grouped['level_2'], format="%Y%m%d")
     result_filtered_grouped.set_index('date', inplace=True)
