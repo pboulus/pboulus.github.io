@@ -27,8 +27,8 @@ current_hour = max(result.index.values) # get latest date
 current_hour = current_hour+np.timedelta64(10, 'h') # add 10h for Sydney time
 current_hour = pulse.date_to_string(current_hour, form="%d/%m/%y %H:%M") # make pretty string
 
-last_hour = result.iloc[-2:] # get last hour of data
-last_hour = last_hour['normalized_yes'] / (last_hour['normalized_yes'] + last_hour['normalized_no']) # calculate proportion
+last_hour = result.iloc[-2:] # get last hour of data + current partial
+last_hour = sum(last_hour['normalized_yes']) / sum(last_hour['normalized_yes'] + last_hour['normalized_no']) # calculate proportion
 last_hour = "{0:.0f}%".format(last_hour * 100)
 
 last_12_hours = result.iloc[-12:] # get last 12 hours of data
