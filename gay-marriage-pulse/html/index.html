@@ -22,11 +22,11 @@
     <link href="css/freelancer.min.css" rel="stylesheet">
 
     <!-- Plotly source -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
   <body id="page-top">
-
+ 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
@@ -54,20 +54,33 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <img class="img-fluid" src="img/heart.svg" width=300px height=300px style="fill:blue; width=300px; height=300px" alt="">
+        <img class="img-fluid" src="img/heart.svg" width=300px height=300px alt="">
         <div class="intro-text">
-          <span class="name">The Australian Marriage Equality Pulse</span>
+          <span class="name">The Marriage Equality Pulse</span>
           <hr class="star-light">
           <span class="skills">A simple analysis of Google Trends to keep a watch on public sentiment leading up to the Australian marriage equality postal survey.</span>
         </div>
       </div>
     </header>
 
+
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
       <div class="container">
-        <h2 class="text-center">The 'big picture' pulse
-        <p style="text-align: center">Tracking 'vote yes' versus 'vote no' in a 24 hour period</p>
+        <h2 class="text-center">The pulse
+        </h2>
+        <hr class="star-primary">
+        <p style="text-align: center">Google Trends search sentiment in favour of 'vote yes' is:</p>
+        <div class="row">
+          <div class = "col-md-4 stat"><h2 data-bind="text: onehr">%</h2><p>in the last hour</div>
+          <div class = "col-md-4 stat"><h2 data-bind="text: twelvehr">%</h2><p>in the last 12 hours</div>
+          <div class = "col-md-4 stat"><h2 data-bind="text: sevenday">0%</h2><p>in the last 7 days</div>
+          </div>
+          <p style="text-align: center; font-size: 12px; padding-bottom:20px">Last data update <span data-bind="text: lastupdated"></span></p>
+      </div>
+      <div class="container">
+        <h2 class="text-center">The daily pulse chart
+        <p style="text-align: center"></p>
         </h2>
         <hr class="star-primary">
         <div class="row">
@@ -76,8 +89,8 @@
       </div>
       <div class="container">
         <p style="padding-top: 50px;">
-        <h2 class="text-center">The hourly pulse
-            <p style="text-align: center">Tracking hourly search intensity for 'vote yes' and 'vote no'</p>
+        <h2 class="text-center">The hourly pulse chart
+            <p style="text-align: center">Hourly search intensity for 'vote yes' and 'vote no'</p>
         </h2>
         <hr class="star-primary">
         <div class="row">
@@ -95,14 +108,14 @@
         
           <div class="col"></div>
           <div class = "col-8">
-            <p>The Pulse measures the rate of Google searches for the phrases 'vote yes' and 'vote no' within Australia.</p>
-            <p>The ratio between 'vote yes' and 'vote no' is the Pulse. A pulse above 50% means sentiment favours 'vote yes'. A pulse below 50% means sentiment favours 'vote no'.</p>
-            <p>The Pulse downloads data on an hourly basis, measures the odds ratio on a 24 hour basis, and plots the odds on a rolling 7 day average basis.</p>
+            <p>The Pulse measures the rate of Google searches for the phrases 'vote yes' and 'vote no' within Australia using the 'Google Trends' tool.</p>
+            <p>The share of 'vote yes' in this search intensity is the Pulse. A pulse above 50% means sentiment favours 'vote yes'. A pulse below 50% means sentiment favours 'vote no'.</p>
+            <p>The Pulse and the accompanying charts update every 15 minutes.</p>
           </div>
           <div class="col"></div>
           <div class="col-lg-8 mx-auto text-center">
-            <a href="https://notebooks.azure.com/pboulus/libraries/electionanalysis/html/google-trends.ipynb" class="btn btn-lg btn-outline" target="_blank">
-              View the notebook
+            <a href="https://github.com/pboulus/pboulus.github.io/gay-marriage-pulse/" class="btn btn-lg btn-outline" target="_blank">
+              View the repo
             </a>
           </div>
         </div>
@@ -120,6 +133,10 @@
             <div class = "col-8">
               <p>It's really important that you get out the vote.</p>
               <p>You can donate here:</p>
+              <ul>
+                <li>Place 1</li>
+                <li>Place 2</li>
+              </ul>
               <p>You can contribute here:</p>
             </div>
             <div class="col">
@@ -185,7 +202,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br><br><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
             </div>
           </div>
         </div>
@@ -210,7 +227,8 @@
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
-
+    <script src="js/knockout.js"></script>
+    
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
     <script>
@@ -226,7 +244,7 @@
         }),
         line: {                             // set the width of the line.
           width: 1,
-          color: 'rgb(214, 110, 36)'
+          color: 'rgb(227, 14, 32)'
         },
         name: '\'Vote Yes\''
       };
@@ -250,10 +268,11 @@
       
   
       var layout = {
-        yaxis: {title: "Search intensity"},       // set the y axis title
+        yaxis: {title: "Search intensity",
+        hoverformat: ',.0f'},       // set the y axis title
         xaxis: {
           showgrid: false,                  // remove the x-axis grid lines
-          tickformat: "%B, %Y"              // customize the date format to "month, day"
+          tickformat: "%d-%b"              // customize the date format to "day-month"
         },
         margin: {                           // update the left, bottom, right, top margin
           l: 40, b: 20, r: 10, t: 20
@@ -261,7 +280,7 @@
         hoverinfo: "none"
       };
       var data = [trace1, trace2];
-      Plotly.plot(document.getElementById('pulse-chart'), data, layout, {showLink: false});
+      Plotly.plot(document.getElementById('pulse-chart'), data, layout, {showLink: false, displayModeBar:  false});
 
       
   });
@@ -275,13 +294,13 @@
         return row['date'];
       }),
       y: rows.map(function(row){          // set the x-data
-        return row['odds'];
+        return row['odds']*100;
       }),
       line: {                             // set the width of the line.
         width: 1,
-        color: 'rgb(214, 110, 36)'
+        color: 'rgb(227, 14, 32)'
       },
-      name: 'Odds of \'Vote Yes\''
+      name: 'Share of \'Vote Yes\''
     };
 
     var trace2 = {
@@ -290,21 +309,24 @@
       x: rows.map(function(row){          // set the x-data
         return row['date'];
       }),
-      y: Array(500).fill(0.5),
+      y: Array(500).fill(50),
       line: {                             // set the width of the line.
         width: 1,
         color: 'rgb(0,0,0)'
       },
-      name: '50:50 yes:no'
+      name: '50:50 yes:no',
+      showlegend: false
     };
 
 
     var layout = {
-      yaxis: {title: "Odds",
-              range: [0, 1]},       // set the y axis title
+      yaxis: {title: "Share",
+              range: [0, 100],
+              ticksuffix: '%',
+              hoverformat: '.0f'},       // set the y axis title
       xaxis: {
         showgrid: false,                  // remove the x-axis grid lines
-        tickformat: "%B, %Y"              // customize the date format to "month, day"
+        tickformat: "%d-%b"              // customize the date format to "day-month"
       },
       margin: {                           // update the left, bottom, right, top margin
         l: 40, b: 20, r: 10, t: 20
@@ -312,7 +334,7 @@
       hoverinfo: "none"
     };
     var data = [trace1, trace2];
-    Plotly.plot(document.getElementById('pulse-chart-2'), data, layout, {showLink: false});
+    Plotly.plot(document.getElementById('pulse-chart-2'), data, layout, {showLink: false, displayModeBar:  false});
 });
 </script>
 <script>
@@ -324,6 +346,20 @@
   ga('create', 'UA-105819075-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+<script>
+  // Here's my data model
+  $.getJSON("https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/gay-marriage-pulse/app/keyvars.json", function(json) {
+    function MyViewModel(json) {
+      console.log(json)
+      this.lastupdated = json[0];
+      this.onehr = json[2];
+      this.twelvehr = json[3];
+      this.sevenday = json[4];
+}
+ko.applyBindings(new MyViewModel(json));
+  });
+  
 </script>
   </body>
 

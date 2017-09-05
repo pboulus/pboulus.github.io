@@ -52,6 +52,16 @@
     }
   }
 }
+.stat{
+  text-align: center;
+  
+  h2 {
+    font-size: 3em;
+    color: $theme-success;
+  }
+}
+
+
 
 .portfolio-modal {
   .modal-dialog {
