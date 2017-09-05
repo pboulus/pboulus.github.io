@@ -90,14 +90,15 @@ def scale_data(result):
     result = result[~result.index.duplicated(keep='first')]
     return result
 
-def group_by_day(result_filtered):
-    result_filtered_grouped = result_filtered.groupby(by=[result_filtered.index.year, result_filtered.index.month, result_filtered.index.day]).sum()
-    result_filtered_grouped = result_filtered_grouped.reset_index()
-    result_filtered_grouped['date'] = pd.to_datetime(result_filtered_grouped['level_0'] * 10000 + result_filtered_grouped['level_1'] * 100 + result_filtered_grouped['level_2'], format="%Y%m%d")
-    result_filtered_grouped.set_index('date', inplace=True)
-    result_filtered_grouped['odds'] = result_filtered_grouped['normalized_yes'] / (result_filtered_grouped['normalized_yes'] + result_filtered_grouped['normalized_no'])
-    result_filtered_grouped['odds_rolling'] = pd.rolling_mean(result_filtered_grouped['odds'], 7)
-    return result_filtered_grouped
+def group_by_day(result):
+    result_grouped = result.groupby(by=[result.index.year, result.index.month, result.index.day]).sum()
+    result_grouped.index.names = [None, None, None]
+    result_grouped = result_grouped.reset_index()
+    result_grouped['date'] = pd.to_datetime(result_grouped['level_0'] * 10000 + result_grouped['level_1'] * 100 + result_grouped['level_2'], format="%Y%m%d")
+    result_grouped.set_index('date', inplace=True)
+    result_grouped['odds'] = result_grouped['normalized_yes'] / (result_grouped['normalized_yes'] + result_grouped['normalized_no'])
+    result_grouped['odds_rolling'] = pd.rolling_mean(result_grouped['odds'], 7)
+    return result_grouped
 
 def join_data(first, second):
     first_filter = first[first.index.isin(second.index)]
