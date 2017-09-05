@@ -1,4 +1,4 @@
-cd ~/pboulus.github.io/gay-marriage-pulse/app/
+cd /home/pboulus/pboulus.github.io/gay-marriage-pulse/app/
 git pull origin master
 python3 update.py
 git add -A 
