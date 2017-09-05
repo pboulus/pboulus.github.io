@@ -39,6 +39,6 @@ rolling_7_days = result_grouped.iloc[-1]['odds_rolling']
 rolling_7_days = "{0:.0f}%".format(rolling_7_days * 100)
 
 with open('keyvars.json', 'w') as outfile:
-    json.dump([last_update, current_hour, last_12_hours, rolling_7_days], outfile)
+    json.dump([last_update, current_hour, last_hour, last_12_hours, rolling_7_days], outfile)
     print(json.dumps([last_update, current_hour, last_hour, last_12_hours, rolling_7_days]))
 
