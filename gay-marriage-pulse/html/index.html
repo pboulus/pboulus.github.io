@@ -44,6 +44,9 @@
               <a class="nav-link js-scroll-trigger" href="#about">How it works</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#means">What it means</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Get involved</a>
             </li>
           </ul>
@@ -107,7 +110,7 @@
         <div class="row">
         
           <div class="col"></div>
-          <div class = "col-8">
+          <div class = "col-8 text-center">
             <p>The Pulse measures the rate of Google searches for the phrases 'vote yes' and 'vote no' within Australia using the 'Google Trends' tool.</p>
             <p>The share of 'vote yes' in this search intensity is the Pulse. A pulse above 50% means sentiment favours 'vote yes'. A pulse below 50% means sentiment favours 'vote no'.</p>
             <p>The Pulse and the accompanying charts update every 15 minutes.</p>
@@ -122,6 +125,31 @@
       </div>
     </section>
 
+        <!-- About Section -->
+        <section class="success2" id="means">
+          <div class="container">
+            <h2 class="text-center">What it means</h2>
+            <hr class="star-primary-invert star-primary">
+            <div class="row">
+            
+              <div class="col"></div>
+              <div class = "col-8 text-center">
+                <p>A similar analysis of Google search data predicted the outcome of the 
+                  Irish marriage equality referendum in 2015. You can read that
+                  study <a href="http://ftp.iza.org/dp9570.pdf" target="_blank">here</a>.</P>
+                  <p>This analysis is likely to have more predictive power closer to the date of 
+                  an election, as voter intent crystallises. It may not have much predictive power in the weeks and months
+                  before a vote.</p>
+                
+                
+              </div>
+              <div class="col"></div>
+              <div class="col-lg-8 mx-auto text-center">
+              </div>
+            </div>
+          </div>
+        </section>
+
     <!-- Contact Section -->
     <section id="contact">
       <div class="container">
@@ -130,7 +158,7 @@
         <div class="row">
           <div class="col">
             </div>
-            <div class = "col-8">
+            <div class = "col-8 text-center">
               <p>The Australian Government is pursuing an Australian Marriage Law Postal Survey.</p>
               <p>If the survey isn't struck out by the courts, marriage equality supporters need 
                 to make sure they do what they can to encourage people to <strong>Vote Yes</strong>.</p>          
@@ -286,7 +314,11 @@
         margin: {                           // update the left, bottom, right, top margin
           l: 40, b: 20, r: 10, t: 20
         },
-        hoverinfo: "none"
+        hoverinfo: "none",
+        legend: {
+          x: 0.05,
+          y: 0.95
+        }
       };
       var data = [trace1, trace2];
       Plotly.plot(document.getElementById('pulse-chart'), data, layout, {showLink: false, displayModeBar:  false});
@@ -356,7 +388,11 @@
       margin: {                           // update the left, bottom, right, top margin
         l: 40, b: 20, r: 10, t: 20
       },
-      hoverinfo: "none"
+      hoverinfo: "none",
+      legend: {
+        x: 0.75,
+        y: 1.05
+      }
     };
     var data = [trace1, trace2, trace3];
     Plotly.plot(document.getElementById('pulse-chart-2'), data, layout, {showLink: false, displayModeBar:  false});

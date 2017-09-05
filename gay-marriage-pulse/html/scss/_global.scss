@@ -48,7 +48,7 @@ hr.star-primary:after {
   top: -.8em;
   display: inline-block;
   padding: 0 0.25em;
-  content: '\f005';
+  content: '\f004';
 }
 
 hr.star-light {
@@ -67,6 +67,14 @@ hr.star-primary:after {
   background-color: white;
 }
 
+hr.star-primary-invert {
+  border-color: white;
+}
+hr.star-primary-invert:after {
+  color: white;
+  background-color: $theme-primary;
+}
+
 .img-centered {
   margin: 0 auto;
 }
@@ -82,6 +90,10 @@ section {
 section.success {
   color: white;
   background: $theme-success;
+}
+section.success2 {
+  color: white;
+  background: $theme-primary;
 }
 @media(max-width:767px) {
   section {

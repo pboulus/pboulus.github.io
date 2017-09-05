@@ -48,7 +48,7 @@ hr.star-primary:after {
   top: -.8em;
   display: inline-block;
   padding: 0 0.25em;
-  content: '\f005'; }
+  content: '\f004'; }
 
 hr.star-light {
   border-color: white; }
@@ -64,6 +64,13 @@ hr.star-primary:after {
   color: #2D0428;
   background-color: white; }
 
+hr.star-primary-invert {
+  border-color: white; }
+
+hr.star-primary-invert:after {
+  color: white;
+  background-color: #2D0428; }
+
 .img-centered {
   margin: 0 auto; }
 
@@ -76,6 +83,10 @@ section {
 section.success {
   color: white;
   background: #E30E20; }
+
+section.success2 {
+  color: white;
+  background: #2D0428; }
 
 @media (max-width: 767px) {
   section {
