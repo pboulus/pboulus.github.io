@@ -1,4 +1,4 @@
-cd /home/pboulus/pboulus.github.io/app/
+cd /home/paul/pboulus.github.io/app/
 git pull origin master
 python3 update.py
 git add -A 
