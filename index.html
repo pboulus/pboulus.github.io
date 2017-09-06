@@ -117,7 +117,7 @@
           </div>
           <div class="col"></div>
           <div class="col-lg-8 mx-auto text-center">
-            <a href="https://github.com/pboulus/pboulus.github.io/tree/master/equality-pulse" class="btn btn-lg btn-outline" target="_blank">
+            <a href="https://github.com/pboulus/pboulus.github.io/tree/master/" class="btn btn-lg btn-outline" target="_blank">
               View the repo
             </a>
           </div>
@@ -270,7 +270,7 @@
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
     <script>
-    Plotly.d3.csv('https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/equality-pulse/app/result.csv', function(rows){
+    Plotly.d3.csv('https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/app/result.csv', function(rows){
       var trace1 = {
         type: 'scatter',                    // set the chart type
         mode: 'lines',                      // connect points with lines
@@ -328,7 +328,7 @@
   });
   </script>
 <script>
-  Plotly.d3.csv('https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/equality-pulse/app/result-grouped.csv', function(rows){
+  Plotly.d3.csv('https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/app/result-grouped.csv', function(rows){
     var trace1 = {
       type: 'scatter',                    // set the chart type
       mode: 'lines',                      // connect points with lines
@@ -411,7 +411,7 @@
 </script>
 <script>
   // Here's my data model
-  $.getJSON("https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/equality-pulse/app/keyvars.json", function(json) {
+  $.getJSON("https://raw.githubusercontent.com/pboulus/pboulus.github.io/master/app/keyvars.json", function(json) {
     function MyViewModel(json) {
       console.log(json)
       this.lastupdated = json[0];
