@@ -309,10 +309,12 @@
   
       var layout = {
         yaxis: {title: "Search intensity",
-        hoverformat: ',.0f'},       // set the y axis title
+        hoverformat: ',.0f',
+        fixedrange: true},       // set the y axis title
         xaxis: {
           showgrid: false,                  // remove the x-axis grid lines
-          tickformat: "%d-%b"              // customize the date format to "day-month"
+          tickformat: "%d-%b",              // customize the date format to "day-month"
+          fixedrange: true
         },
         margin: {                           // update the left, bottom, right, top margin
           l: 40, b: 30, r: 20, t: 20
@@ -383,10 +385,12 @@
       yaxis: {title: "Share",
               range: [0, 100],
               ticksuffix: '%',
-              hoverformat: '.0f'},       // set the y axis title
+              hoverformat: '.0f',
+              fixedrange: true},       // set the y axis title
       xaxis: {
         showgrid: false,                  // remove the x-axis grid lines
-        tickformat: "%d-%b"              // customize the date format to "day-month"
+        tickformat: "%d-%b",              // customize the date format to "day-month"
+        fixedrange: true
       },
       margin: {                           // update the left, bottom, right, top margin
         l: 40, b: 30, r: 20, t: 20
