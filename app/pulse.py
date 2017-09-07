@@ -87,7 +87,7 @@ def scale_data(result):
         result.ix[result.chainlink==i, 'normalized_no'] = result.ix[result.chainlink==i, 'vote no'] * scalar[i,1]
     result = result.dropna(axis=0, how='any', subset=['normalized_yes', 'normalized_no'])
     result = result.sort_index()
-    result = result[~result.index.duplicated(keep='first')]
+    result = result[~result.index.duplicated(keep='last')]
     return result
 
 def group_by_day(result):
@@ -117,7 +117,21 @@ def join_data(first, second):
     joined = first.append(second)
     joined = joined.dropna(axis=0, how='any', subset=['normalized_yes', 'normalized_no'])
     joined = joined.sort_index()
-    joined = joined[~joined.index.duplicated(keep='first')]
+    joined = joined[~joined.index.duplicated(keep='last')]
     joined['yes_rolling'] = pd.rolling_mean(joined['normalized_yes'], 12) #12 hour rolling avg
     joined['no_rolling'] = pd.rolling_mean(joined['normalized_no'], 12) #12 hour rolling avg
     return joined
+
+def collect_last_hour():
+    #calculating last hour    
+    import pytrends
+    pytrend = TrendReq()
+    start = pulse.date_to_string(np.datetime64('now') - np.timedelta64(1, 'h'), form='%Y-%m-%dT%H')
+    finish = pulse.date_to_string(np.datetime64('now') + np.timedelta64(0, 'h'), form='%Y-%m-%dT%H')
+    print("start: ", start, "finish: ", finish)
+    pytrend.build_payload(kw_list=['vote yes', 'vote no'], timeframe='%s %s' % (start, finish), geo='AU')
+    interest_over_time_df = pytrend.interest_over_time()
+    yes_vote = sum(interest_over_time_df['vote yes'])
+    no_vote = sum(interest_over_time_df['vote no'])
+    hourly_pulse = yes_vote/(yes_vote + no_vote)
+    return(hourly_pulse)
