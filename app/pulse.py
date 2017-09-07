@@ -124,6 +124,7 @@ def join_data(first, second):
 
 def collect_last_hour():
     #calculating last hour    
+    print("Collecting last hour pulse")
     import pytrends
     pytrend = TrendReq()
     start = pulse.date_to_string(np.datetime64('now') - np.timedelta64(1, 'h'), form='%Y-%m-%dT%H')
