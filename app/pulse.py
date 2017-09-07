@@ -127,8 +127,8 @@ def collect_last_hour():
     print("Collecting last hour pulse")
     import pytrends
     pytrend = TrendReq()
-    start = pulse.date_to_string(np.datetime64('now') - np.timedelta64(1, 'h'), form='%Y-%m-%dT%H')
-    finish = pulse.date_to_string(np.datetime64('now') + np.timedelta64(0, 'h'), form='%Y-%m-%dT%H')
+    start = date_to_string(np.datetime64('now') - np.timedelta64(1, 'h'), form='%Y-%m-%dT%H')
+    finish = date_to_string(np.datetime64('now') + np.timedelta64(0, 'h'), form='%Y-%m-%dT%H')
     print("start: ", start, "finish: ", finish)
     pytrend.build_payload(kw_list=['vote yes', 'vote no'], timeframe='%s %s' % (start, finish), geo='AU')
     interest_over_time_df = pytrend.interest_over_time()
