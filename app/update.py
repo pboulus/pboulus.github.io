@@ -9,7 +9,7 @@ now = np.datetime64('now')
 delta = pd.Timedelta(now - maxtime, 'h')
 print(delta.seconds)
 
-result2 =  pulse.collect_data(start_date=maxtime-pd.Timedelta('2 day'))
+result2 =  pulse.collect_data(start_date=maxtime-pd.Timedelta('7 day'))
 result2 = pulse.scale_data(result2)
 result = pulse.join_data(result, result2)
 print("Updated data")
