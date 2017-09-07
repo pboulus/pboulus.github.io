@@ -1,2 +1,4 @@
 node_modules
-app/__pycache__
+app/__pycache__/
+app/Untitled.ipynb
+app/.ipynb_checkpoints/Untitled-checkpoint.ipynb
