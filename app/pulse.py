@@ -136,3 +136,18 @@ def collect_last_hour():
     no_vote = sum(interest_over_time_df.iloc[-60:]['vote no'])
     hourly_pulse = yes_vote/(yes_vote + no_vote)
     return(hourly_pulse)
+
+def collect_last_day():
+    #calculating last hour    
+    print("Collecting last 24 hours pulse")
+    import pytrends
+    pytrend = TrendReq()
+    start = date_to_string(np.datetime64('now') - np.timedelta64(24, 'h'), form='%Y-%m-%dT%H')
+    finish = date_to_string(np.datetime64('now') + np.timedelta64(1, 'h'), form='%Y-%m-%dT%H')
+    print("start: ", start, "finish: ", finish)
+    pytrend.build_payload(kw_list=['vote yes', 'vote no'], timeframe='%s %s' % (start, finish), geo='AU')
+    interest_over_time_df = pytrend.interest_over_time()
+    yes_vote = sum(interest_over_time_df.iloc['vote yes'])
+    no_vote = sum(interest_over_time_df.iloc['vote no'])
+    daily_pulse = yes_vote/(yes_vote + no_vote)
+    return(daily_pulse)

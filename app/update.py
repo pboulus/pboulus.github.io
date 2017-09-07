@@ -30,14 +30,13 @@ current_hour = pulse.date_to_string(current_hour, form="%d/%m/%y %H:%M") # make 
 last_hour = pulse.collect_last_hour()
 last_hour = "{0:.0f}%".format(last_hour * 100)
 
-last_12_hours = result.iloc[-12:] # get last 12 hours of data
-last_12_hours = sum(last_12_hours['normalized_yes']) / (sum(last_12_hours['normalized_yes']) + sum(last_12_hours['normalized_no'])) # calculate proportion
-last_12_hours = "{0:.0f}%".format(last_12_hours * 100)
+last_day = pulse.collect_last_day()
+last_day = "{0:.0f}%".format(last_day * 100)
 
 rolling_7_days = result_grouped.iloc[-1]['odds_rolling']
 rolling_7_days = "{0:.0f}%".format(rolling_7_days * 100)
 
 with open('keyvars.json', 'w') as outfile:
-    json.dump([last_update, current_hour, last_hour, last_12_hours, rolling_7_days], outfile)
-    print(json.dumps([last_update, current_hour, last_hour, last_12_hours, rolling_7_days]))
+    json.dump([last_update, current_hour, last_hour, last_day, rolling_7_days], outfile)
+    print(json.dumps([last_update, current_hour, last_hour, last_day, rolling_7_days]))
 
