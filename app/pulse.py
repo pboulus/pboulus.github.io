@@ -132,7 +132,6 @@ def collect_last_hour():
     print("start: ", start, "finish: ", finish)
     pytrend.build_payload(kw_list=['vote yes', 'vote no'], timeframe='%s %s' % (start, finish), geo='AU')
     interest_over_time_df = pytrend.interest_over_time()
-    print(interest_over_time_df.iloc[-60:])
     yes_vote = sum(interest_over_time_df.iloc[-60:]['vote yes'])
     no_vote = sum(interest_over_time_df.iloc[-60:]['vote no'])
     hourly_pulse = yes_vote/(yes_vote + no_vote)
