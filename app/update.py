@@ -24,7 +24,7 @@ result_grouped.to_csv('result-grouped.csv')
 last_update = pulse.date_to_string(now+np.timedelta64(10, 'h'), form="%d/%m/%y %H:%M") # make pretty string
 
 current_hour = max(result.index.values) # get latest date
-current_hour = current_hour+np.timedelta64(11, 'h') # add 11h for Sydney time
+current_hour = current_hour+np.timedelta64(12, 'h') # add 12h for Sydney time
 current_hour = pulse.date_to_string(current_hour, form="%d/%m/%y %H:%M") # make pretty string
 
 last_hour = pulse.collect_last_hour()
