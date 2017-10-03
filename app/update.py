@@ -15,6 +15,7 @@ result = pulse.join_data(result, result2)
 print("Updated data")
 
 # Pickle and write data
+result.index.name='date'
 result.to_pickle('result.pd')
 result.to_csv('result.csv', float_format='%f')
 result_grouped = pulse.group_by_day(result)
@@ -39,4 +40,3 @@ rolling_7_days = "{0:.0f}%".format(rolling_7_days * 100)
 with open('keyvars.json', 'w') as outfile:
     json.dump([last_update, current_hour, last_hour, last_day, rolling_7_days], outfile)
     print(json.dumps([last_update, current_hour, last_hour, last_day, rolling_7_days]))
-
