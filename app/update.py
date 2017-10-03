@@ -16,9 +16,9 @@ print("Updated data")
 
 # Pickle and write data
 result.to_pickle('result.pd')
-result.to_csv('result.csv', float_format='%g', encoding='utf-8')
+result.to_csv('result.csv', float_format='%f', encoding='utf-8')
 result_grouped = pulse.group_by_day(result)
-result_grouped.to_csv('result-grouped.csv',float_format='%g', encoding='utf-8')
+result_grouped.to_csv('result-grouped.csv',float_format='%f', encoding='utf-8')
 
 # Calculate and save metrics
 last_update = pulse.date_to_string(now+np.timedelta64(10, 'h'), form="%d/%m/%y %H:%M") # make pretty string
