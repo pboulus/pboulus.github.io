@@ -293,7 +293,7 @@
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
     <script>
-    Plotly.d3.csv('http://equalitypulse.com/app/result.csv', function(rows){
+    Plotly.d3.csv('https://pboulus.github.io/app/result.csv', function(rows){
       var trace1 = {
         type: 'scatter',                    // set the chart type
         mode: 'lines',                      // connect points with lines
@@ -354,7 +354,7 @@
   });
   </script>
 <script>
-  Plotly.d3.csv('http://equalitypulse.com/app/result-grouped.csv', function(rows){
+  Plotly.d3.csv('https://pboulus.github.io/app/result-grouped.csv', function(rows){
     var trace1 = {
       type: 'scatter',                    // set the chart type
       mode: 'lines',                      // connect points with lines
@@ -439,7 +439,7 @@
 </script>
 <script>
   // Here's my data model
-  $.getJSON("http://equalitypulse.com/app/keyvars.json", function(json) {
+  $.getJSON("https://pboulus.github.io/app/keyvars.json", function(json) {
     function MyViewModel(json) {
       console.log(json)
       this.lastupdated = json[0];
